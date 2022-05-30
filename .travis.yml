@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t yanmifeakeju/docker-hosting -f Dockerfile.dev
+  - docker build -t yanmifeakeju/docker-hosting -f Dockerfile.dev .
 
 script:
   - docker run yanmifeakeju/docker-hosting npm test -- --coverage
