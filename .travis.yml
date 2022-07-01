@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run -e CI=true yanmifeakeju/docker-hosting npm test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'docker-deploy'
+  env: 'Dockerdeploy-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-827732830466'
+  bucket_path: 'docker-deploy'
+  on:
+    branch: master
+  access_key_id: '$AWS_ACCESS_KEY'
+  secret_access_key:
+    secure: '$AWS_SECRET_KEY'
